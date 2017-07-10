@@ -1,5 +1,5 @@
 const {app, Menu} = require('electron')
-const {showMessage,showSaveDialog} = require('./dialog.js')
+const {showMessage,showSaveDialog,showOpenDialog} = require('./dialog.js')
 
 module.exports = {
     setMainMenu
@@ -12,12 +12,14 @@ function setMainMenu(mainWindow){
              submenu:[
                  {
                     label:'Say Hello' ,
+                    accelerator:'CmdOrCtrl+H',
                     click(){
                         showMessage(mainWindow); 
                     }
                  },
                  {
                     label:'Save Memory Usage Info' ,
+                    accelerator:'CmdOrCtrl+S',
                     click(){
                         showSaveDialog(mainWindow);
                     }
@@ -25,7 +27,7 @@ function setMainMenu(mainWindow){
                  {
                     label:'Open File' ,
                     click(){
-                        
+                        showOpenDialog(mainWindow);
                     }
                  },
                  {type:'separator'},
